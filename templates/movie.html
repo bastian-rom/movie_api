@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .movie-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .genres {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .genre {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-container">
+        <img src="{{ data.poster_path }}" alt="Movie Poster">
+        <h1>{{ data.title }}</h1>
+        <p>{{ data.overview }}</p>
+        <div class="genres">
+            {% for genre in data.genres %}
+                <div class="genre">{{ genre.name }}</div>
+            {% endfor %}
+        </div>
+        <p><strong>Release Date:</strong> {{ data.release_date }}</p>
+        <p><strong>Runtime:</strong> {{ data.runtime }} minutes</p>
+        <p><strong>Popularity:</strong> {{ data.popularity }}</p>
+        <p><strong>Vote Average:</strong> {{ data.vote_average }}</p>
+        <p><strong>Vote Count:</strong> {{ data.vote_count }}</p>
+        <p><strong>Homepage:</strong> <a href="{{ data.homepage }}" target="_blank">{{ data.homepage }}</a></p>
+    </div>
+</body>
+</html>
